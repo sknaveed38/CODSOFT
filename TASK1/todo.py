@@ -1,9 +1,4 @@
-# A beginner-friendly, well-commented, and structured To-Do List application.
-
-# The tasks will be stored in a file named "tasks.txt" in the same directory.
-# Each task is stored on a new line.
-# A completed task is marked with a "[DONE]" prefix.
-
+#output in terminal command line sk
 def load_tasks():
     """
     Loads tasks from the tasks.txt file into a list.
@@ -101,7 +96,7 @@ def main():
     tasks = load_tasks()
 
     while True:
-        print("\n--- To-Do List Application ---")
+        print("\n---* To-Do List Application *---")
         print("1. Add a new task")
         print("2. View all tasks")
         print("3. Update or edit an existing task")
