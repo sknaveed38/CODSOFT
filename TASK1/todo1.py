@@ -1,7 +1,6 @@
+#output in GUL(graphical user interface) based sk
 import tkinter as tk
 from tkinter import messagebox
-
-# --- Data Persistence ---
 
 def load_tasks():
     """
@@ -23,41 +22,31 @@ def save_tasks(tasks):
         for task in tasks:
             f.write(task + "\n")
 
-# --- GUI Application ---
-
 class TodoApp:
     def __init__(self, root):
         self.root = root
         self.root.title("To-Do List")
         self.root.geometry("400x400")
-
         self.tasks = load_tasks()
 
-        # --- UI Elements ---
-
-        # Frame for the listbox and scrollbar
         self.frame_tasks = tk.Frame(self.root)
         self.frame_tasks.pack(pady=10)
 
-        # Listbox to display tasks
         self.listbox_tasks = tk.Listbox(self.frame_tasks, width=50, height=15, selectmode=tk.SINGLE)
         self.listbox_tasks.pack(side=tk.LEFT)
 
-        # Scrollbar for the listbox
+    
         self.scrollbar_tasks = tk.Scrollbar(self.frame_tasks)
         self.scrollbar_tasks.pack(side=tk.RIGHT, fill=tk.Y)
         self.listbox_tasks.config(yscrollcommand=self.scrollbar_tasks.set)
         self.scrollbar_tasks.config(command=self.listbox_tasks.yview)
-
-        # Entry widget to add new tasks
+        
         self.entry_task = tk.Entry(self.root, width=50)
         self.entry_task.pack(pady=10)
 
-        # Frame for the buttons
         self.frame_buttons = tk.Frame(self.root)
         self.frame_buttons.pack(pady=10)
 
-        # Buttons
         self.button_add_task = tk.Button(self.frame_buttons, text="Add Task", command=self.add_task)
         self.button_add_task.pack(side=tk.LEFT, padx=5)
 
@@ -67,7 +56,6 @@ class TodoApp:
         self.button_mark_completed = tk.Button(self.frame_buttons, text="Mark Completed", command=self.mark_task_completed)
         self.button_mark_completed.pack(side=tk.LEFT, padx=5)
 
-        # --- Initial data load ---
         self.populate_tasks_listbox()
 
     def populate_tasks_listbox(self):
